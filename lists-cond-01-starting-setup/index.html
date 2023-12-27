@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input type="text" v-model="enteredValue"/>
+      <button @click="addGoal">Add Goal</button>
+      <!-- v-if and v-else and v-else-if will decide whether to include the elements in the DOM.Not just hiding -->
+      <p v-if="goals.length === 0">
+        No goals have been added yet - please start adding some!
+      </p>
+      <!-- v-else or v-else-if must come after a v-if directly,no other elements allowed in between. -->
+      <!-- v-for: item in items ,allow you to loop an array. Please note the item is only accessible in the element which it attached to.Outside of the element,you cannot access to it-->
+      <!-- <li v-for="goal in goals">{{ goal }}</li> -->
+      <!-- loop through an array -->
+      <ul v-else="goals.length>0">
+        <!--  Always add a key attribute to the element which is looped through. The key attribute should be unique. -->
+        <li v-for="(goal,index) in goals" :key="goal" @click="removeGoal(index)">{{index}} - {{ goal }}
+          <!-- use stop modifier to stop the event from bubbling up -->
+          <input type="text" @click.stop>
+        </li>
+      </ul>
+      <!-- loop throught an object -->
+      <ul>
+        <li v-for="(value,key,index) in {name:'Cora',age:27}">{{index}} - {{key}} - {{value}}</li>
+      </ul>
+      <!-- loop through numbers -->
+      <ul>
+        <li v-for="num in 10">{{num}}</li>
+      </ul>
+      <!-- v-show is an alternative to v-if.The difference is v-show only hide the elements in the DOM by setting the display property to none, while v-if completely remove the element from the DOM.
+      Usually goes for v-if since it has better performance. -->
+      <!-- 
+        <input type="text" v-model="enteredValue"/>
+        <button @click="addGoal">Add Goal</button>
+        <p v-show="goals.length === 0">
+          No goals have been added yet - please start adding some!
+        </p>
+        <ul v-show="goals.length>0">
+          <li>Goal</li>
+        </ul>
+      -->
+    </section>
+  </body>
+</html>
