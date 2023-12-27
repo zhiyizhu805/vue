@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <!-- event listener for click event:You can either call a method 
+        or just point to a method.Either way works fine in Vue. -->
+      <!-- <button v-on:click="add()">Add</button>
+      <button v-on:click="reduce()">Remove</button> -->
+      <!-- use v-once to lock the content -->
+      <p v-once>Initial result: {{ counter }}</p>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click.right="reduce(10)">Remove 10</button>
+      <p>Result: {{ counter }}</p>
+      <!-- event is the default object.You can access it in the method. Even
+      though you don't pass it in the method, it's still available as the first argument. 
+      However, when you need to pass in other arguments,
+       you need to use $event to pass in the event object. -->
+      <input type="text" v-on:input="setName($event,'Lee')" />
+      <p>Your Name:{{inputName}}</p>
+      <!-- button in form will trigger submit event. 
+        There are two ways to handle submit event:
+        1) use v-on:submit="submitForm",then in the method, 
+        use event.preventDefault() to prevent the default behavior.
+        <form v-on:submit="submitForm">
+          <input type="text">
+          <button>Sign Up</button>
+        </form>
+      -->
+      <!-- 2) use modifier v-on:submit.prevent="submitForm" to prevent the default behavior.-->
+      <form v-on:submit.prevent="submitForm">
+        <input type="text" />
+        <button>Sign Up</button>
+      </form>
+
+      <!--  add another event listener to listen to keyboard event. -->
+      <input
+        type="text"
+        v-on:input="setName($event,'Lee')"
+        v-on:keyup.enter="confirmInput"
+      />
+      <p>Your Confirmed Name:{{confirmName}}</p>
+    </section>
+  </body>
+</html>

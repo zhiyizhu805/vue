@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Dynamic Styling</h1>
+    </header>
+    <section id="styling">
+      <!-- dynamic styling using v-bind and {} special binding syntax -->
+      <!--<div class="demo" @click="boxSelected('A')" :style="{borderColor:boxASelected? 'red' : '#ccc' }"></div>
+      <div class="demo" @click="boxSelected('B')" :style="{borderColor:boxBSelected? 'red' : '#ccc' }"></div>
+      <div class="demo" @click="boxSelected('C')" :style="{borderColor:boxCSelected? 'red' : '#ccc' }"></div>-->
+
+      <!-- Way 1: use v-bind and ternary statement to dynamically add class -->
+      <!--<div :class="boxASelected?'demo active':'demo'" @click="boxSelected('A')" ></div>-->
+      <!-- Way 2: use v-bind and {} special binding syntax to dynamically add class -->
+        <!-- Please note in vue, :class(daynamical bind class) will be auto added to the regular class attribute -->
+        <!-- <div :class="{demo:true,active:boxASelected}" @click="boxSelected('A')" ></div> -->
+
+      <!-- <div class="demo ":class="{active:boxASelected}" @click="boxSelected('A')" ></div>
+      <div class="demo" :class="{active:boxBSelected}" @click="boxSelected('B')" ></div>
+      <div class="demo" :class="{active:boxCSelected}" @click="boxSelected('C')" ></div> -->
+
+      <!-- Move logic to computed property -->
+      <div class="demo" :class="boxAClasses" @click="boxSelected('A')" ></div>
+      <div class="demo" :class="boxBClasses" @click="boxSelected('B')" ></div>
+      <div class="demo" :class="boxCClasses" @click="boxSelected('C')" ></div>
+    </section>
+  </body>
+</html>
