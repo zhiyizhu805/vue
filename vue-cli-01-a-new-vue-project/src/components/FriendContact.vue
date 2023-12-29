@@ -62,6 +62,14 @@ export default {
       default: false,
     },
   },
+  //add emits to the component to tell Vue that this component can emit an event
+  emits: ["toggle-favorite"],
+  // emits: {
+  //   // you can define a function to validate the event
+  //   'toggle-favorite': function (id) {
+  //     return id === "manuel" || id === "julie";
+  //   },
+  //   },
   data() {
     return {
       detailsAreVisible: false,
@@ -76,7 +84,7 @@ export default {
     toggleFavorite() {
       // this.friendIsFavorite = !this.friendIsFavorite;
       // console.log(this.friendIsFavorite)
-      
+
       // way 2(part1) : use $emit to emit an event to the parent component
       this.$emit("toggle-favorite", this.id);
       // way 2(pary2):listent to the event in the parent component use v-on: or @  @toggle-favorite="toggleFavorite"
