@@ -11,6 +11,9 @@
       <li><strong>Phone:</strong> {{ phoneNumber }}</li>
       <li><strong>Email:</strong> {{ emailAddress }}</li>
     </ul>
+    <!-- note5:both syntax are valid -->
+    <button @click="deleteContact(id)">Delete</button>
+    <!-- <button @click="$emit('deleteContact',id)">Delete</button> -->
   </li>
 </template>
 
@@ -63,7 +66,7 @@ export default {
     },
   },
   //add emits to the component to tell Vue that this component can emit an event
-  emits: ["toggle-favorite"],
+  emits: ["toggle-favorite", "delete-contact"],
   // emits: {
   //   // you can define a function to validate the event
   //   'toggle-favorite': function (id) {
@@ -89,6 +92,9 @@ export default {
       this.$emit("toggle-favorite", this.id);
       // way 2(pary2):listent to the event in the parent component use v-on: or @  @toggle-favorite="toggleFavorite"
       //define a method in the parent component to handle the event
+    },
+    deleteContact() {
+      this.$emit("delete-contact", this.id);
     },
   },
 };
