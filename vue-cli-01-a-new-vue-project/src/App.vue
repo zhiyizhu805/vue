@@ -4,7 +4,10 @@
     <header><h1>My Friends</h1></header>
     <ul>
       <!--  in template, we should use kebab-case for the props-->
-      <friend-contact v-for="friend in friends" :key="friend.id" :name="friend.name" :phone-number="friend.phone" :email-address="friend.email"
+      <friend-contact v-for="friend in friends" 
+      :id ="friend.id"
+      @toggle-favorite="toggleFavorite"
+      :key="friend.id" :name="friend.name" :phone-number="friend.phone" :email-address="friend.email"
       :is-favorite="friend.isFavorite"></friend-contact>
     </ul>
   </section>
@@ -19,7 +22,7 @@ export default {
     return {
            friends: [
         {
-          id: "manuel",
+          id: "manuel", 
           name: "Manuel Lorenz",
           phone: "01234 5678 991",
           email: "manuel@example.com",
@@ -34,6 +37,13 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    toggleFavorite(id) {
+      const friend = this.friends.find((friend) => friend.id === id);
+      friend.isFavorite = !friend.isFavorite;
+      // console.log(id)
+    },
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ name }}{{ friendIsFavorite === true ? "(Favorite)" : "" }}</h2>
+    <h2>{{ name }}{{ isFavorite === true ? "(Favorite)" : "" }}</h2>
     <button @click="toggleDetails">
       {{ detailsAreVisible ? "Hide" : "Show" }} Details
     </button>
@@ -26,6 +26,10 @@ export default {
     // name:String,
 
     // syntax3: define prop with type and required
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -61,7 +65,8 @@ export default {
   data() {
     return {
       detailsAreVisible: false,
-      friendIsFavorite : this.isFavorite,
+      //way 1:use the initial value of the prop as the initial value of a data property 
+      // friendIsFavorite : this.isFavorite,
     };
   },
   methods: {
@@ -69,8 +74,13 @@ export default {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
     toggleFavorite() {
-      this.friendIsFavorite = !this.friendIsFavorite;
-      console.log(this.friendIsFavorite)
+      // this.friendIsFavorite = !this.friendIsFavorite;
+      // console.log(this.friendIsFavorite)
+      
+      // way 2(part1) : use $emit to emit an event to the parent component
+      this.$emit("toggle-favorite", this.id);
+      // way 2(pary2):listent to the event in the parent component use v-on: or @  @toggle-favorite="toggleFavorite"
+      //define a method in the parent component to handle the event
     },
   },
 };
