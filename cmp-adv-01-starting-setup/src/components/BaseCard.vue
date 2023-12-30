@@ -2,9 +2,11 @@
   <div>
     <header>
       <!--  name the slot ,in the child component, you can use the name to specify where to put the slot content using v-slot:name-of-your-slot -->
-      <slot name="header"></slot>
+      <!--  you can set the default content for the slot, if the parent component doesn't provide the content for the slot, the default content will be used -->
+      <slot name="header"><h2>The default</h2></slot>
     </header>
-    <slot></slot>
+    <!-- slot without name is the default slot -->     
+       <slot></slot>
   </div>
 </template>
 
@@ -13,6 +15,11 @@ export default {};
 </script>
 
 <style scoped>
+section header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 div {
   margin: 2rem auto;
   max-width: 30rem;
