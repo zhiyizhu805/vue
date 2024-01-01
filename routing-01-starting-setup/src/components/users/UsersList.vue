@@ -1,6 +1,13 @@
 <template>
+ <!--(2) Programmatic navigation example:  do something ,then navigate to the right page -->
+  <button @click="comfirmInput">Confirm</button>
   <ul>
-    <user-item v-for="user in users" :key="user.id" :name="user.fullName" :role="user.role"></user-item>
+    <user-item
+      v-for="user in users"
+      :key="user.id"
+      :name="user.fullName"
+      :role="user.role"
+    ></user-item>
   </ul>
 </template>
 
@@ -12,6 +19,13 @@ export default {
     UserItem,
   },
   inject: ['users'],
+  methods: {
+    comfirmInput() {
+      //do something
+      //since we add the router package, we can use this.$router.push() to navigate to the right page
+     this.$router.push('/teams');
+    },
+  },
 };
 </script>
 

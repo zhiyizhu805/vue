@@ -1,10 +1,12 @@
 <template>
   <ul>
+    <!-- (4.1) pass the id to the team-item component -->
     <teams-item
       v-for="team in teams"
       :key="team.id"
       :name="team.name"
       :member-count="team.members.length"
+      :id="team.id"
     ></teams-item>
   </ul>
 </template>

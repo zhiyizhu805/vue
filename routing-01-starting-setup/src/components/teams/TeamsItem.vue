@@ -2,14 +2,26 @@
   <li>
     <h3>{{ name }}</h3>
     <div class="team-members">{{ memberCount }} Members</div>
-    <a href="#">View Members</a>
+    <!-- <a href="#">View Members</a> -->
+    <!--  (4) dynamic path, use v-bind to bind dynamic user input for the selected team -->
+    <!-- (4.3) bind the id to the router-link -->
+    <router-link :to="teamMembersLink">View Members</router-link>
+
+  
   </li>
 </template>
 
 <script>
 export default {
-  props: ['name', 'memberCount'],
-};
+  // (4.2) receive the id from the parent component
+  props: ['id','name', 'memberCount'],
+  // (4.4) outsourced the dynamic path to a computed property
+  computed:{
+    teamMembersLink(){
+      return `/teams/${this.id}`
+    }
+  }
+}
 </script>
 
 <style scoped>
