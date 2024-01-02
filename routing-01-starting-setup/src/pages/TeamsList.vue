@@ -9,10 +9,12 @@
       :id="team.id"
     ></teams-item>
   </ul>
+  <!-- (9.2) add router-link for child routes -->
+  <router-view></router-view>
 </template>
 
 <script>
-import TeamsItem from './TeamsItem.vue';
+import TeamsItem from '../components/teams/TeamsItem.vue';
 
 export default {
   components: {

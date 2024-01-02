@@ -4,7 +4,7 @@
       <ul>
         <li>
           <!-- <button @click="setActivePage('teams-list')">Teams</button> -->
-          <!--  6. use router-link tag to let vue direct the user to the right page -->
+          <!--  (1.6) use router-link tag to let vue direct the user to the right page -->
           <router-link to="/teams">Teams</router-link>
         </li>
         <li>
@@ -62,7 +62,7 @@ a {
   display: inline-block;
 }
 
-  /* 7: styling active links so users know which page they are on */
+  /* (1.7): styling active links so users know which page they are on */
 a:hover,
 a:active,
   /*  a.router-link-active  tells css that I want to apply the styles to every anchor tag that has router-link-active class on it. */

@@ -3,13 +3,17 @@
   <the-navigation></the-navigation>
   <main>
     <!-- <component :is="activePage"></component> -->
-    <!--  4: use router-view tag to let vue router to render the component -->
+    <!--  (1.4) use router-view tag to let vue router to render the component -->
     <router-view></router-view>
   </main>
+  <!-- add another router-view tag for footer and name it.Just as slots, unnamed router-view will be rendered by default -->
+  <footer>
+    <router-view name="footer"></router-view>
+  </footer>
 </template>
 
 <script>
-//5. remove the import of TeamsList and UsersList and register the components in the router configuration
+//(1.5) remove the import of TeamsList and UsersList and register the components in the router configuration
 // import TeamsList from './components/teams/TeamsList.vue';
 // import UsersList from './components/users/UsersList.vue';
 import TheNavigation from './components/nav/TheNavigation.vue';
