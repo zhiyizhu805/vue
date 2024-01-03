@@ -13,9 +13,15 @@ export default {
     // (6.2.1) use mapActions to map the actions to the local methods. Its alternative is in(4.6).This saves code
     // ...mapActions(['increaseOne','increaseTen']),
     // (6.2.2) you can also rename the actions
-    ...mapActions({
-        increase1: 'increaseOne',
-        increase20: 'increaseTen',
+    // ...mapActions({
+    //     increase1: 'increaseOne',
+    //     increase20: 'increaseTen',
+    // })
+    
+    // (9.2.3) if the namespaced module is used, we need to specify the module name
+    ...mapActions('numbers',{
+    increase1: 'increaseOne',
+    increase20: 'increaseTen',
     })
 
 

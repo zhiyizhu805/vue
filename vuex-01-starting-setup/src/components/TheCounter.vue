@@ -2,7 +2,7 @@
 <!-- (1.4) access the global state through the store object -->
   <!-- <h3>{{ counter }}</h3> -->
   <!-- (5.3) directly access the getter -->
-  <h3>{{ normalizedCounter }}</h3>
+  <h3>{{ finalCounter }}</h3>
 </template>
 
 <script>
@@ -17,7 +17,10 @@ export default {
     // },
   
       // (5.2)instead of (3.4), we can use mapGetters
-      ...mapGetters(['normalizedCounter'])
+      // ...mapGetters(['finalCounter'])
+      
+      //(9.2.1) if the namespaced module is used, we need to specify the module name
+      ...mapGetters('numbers',['finalCounter'])
   },  
 };
 </script>

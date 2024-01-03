@@ -37,7 +37,9 @@ export default {
       // (2.2) call the increment mutation
       // this.$store.commit('increaseOne');
       // (4.6.2) Instead of in(2.2), we use dispatch to call an action.
-      this.$store.dispatch('increaseOne');
+
+      // (9.2.4) if the namespaced module is used, we need to specify the module name
+      this.$store.dispatch('numbers/increaseOne');
     },
   },
 };
